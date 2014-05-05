@@ -1,4 +1,4 @@
-window.Echo = (function (global, document, undefined) {
+window.Echo = function (global, document, undefined) {
 
   'use strict';
 
@@ -76,8 +76,9 @@ window.Echo = (function (global, document, undefined) {
    */
   var init = function (obj) {
 
-    var nodes = document.querySelectorAll('img[data-echo]');
     var opts = obj || {};
+    var el = obj.element || document;
+    var nodes = el.querySelectorAll('[data-echo]');
     offset = parseInt(opts.offset || 0);
     throttle = parseInt(opts.throttle || 250);
     callback = opts.callback || callback;
@@ -107,4 +108,4 @@ window.Echo = (function (global, document, undefined) {
     render: _pollImages
   };
 
-})(this, document);
+};
